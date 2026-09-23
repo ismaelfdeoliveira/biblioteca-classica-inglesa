@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-body: 'Cormorant Garamond', Georgia, serif;
+}
+
+:root {
+  --color-bordo: #5b1a1a;
+  --color-bordo-deep: #3d0f0f;
+  --color-bordo-light: #7a2e2e;
+  --color-gold: #c9a961;
+  --color-gold-aged: #a88a4a;
+  --color-gold-bright: #e0c485;
+  --color-forest: #1f3a2e;
+  --color-forest-deep: #142419;
+  --color-parchment: #f4ecd8;
+  --color-parchment-dark: #e8dcc0;
+  --color-ink: #2a1f1a;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-forest-deep);
+  color: var(--color-parchment);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-serif-display {
+  font-family: var(--font-serif);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Subtle parchment texture via layered gradients */
+.bg-parchment {
+  background-color: var(--color-parchment);
+  background-image:
+    radial-gradient(at 20% 15%, rgba(201, 169, 97, 0.10) 0px, transparent 50%),
+    radial-gradient(at 80% 85%, rgba(91, 26, 26, 0.06) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(168, 138, 74, 0.05) 0px, transparent 70%);
+}
+
+.bg-forest-deep {
+  background-color: var(--color-forest-deep);
+}
+
+.text-gold {
+  color: var(--color-gold);
+}
+
+.text-gold-bright {
+  color: var(--color-gold-bright);
+}
+
+.text-bordo {
+  color: var(--color-bordo);
+}
+
+.text-parchment {
+  color: var(--color-parchment);
+}
+
+.text-ink {
+  color: var(--color-ink);
+}
+
+.border-gold {
+  border-color: var(--color-gold);
+}
+
+.border-bordo {
+  border-color: var(--color-bordo);
+}
+
+.border-bordo-deep {
+  border-color: var(--color-bordo-deep);
+}
+
+.bg-bordo {
+  background-color: var(--color-bordo);
+}
+
+.bg-bordo-deep {
+  background-color: var(--color-bordo-deep);
+}
+
+.bg-gold {
+  background-color: var(--color-gold);
+}
+
+/* Ornamental divider */
+.ornament-line {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-gold-aged);
+}
+.ornament-line::before,
+.ornament-line::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold-aged), transparent);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pulseRing {
+  0% { box-shadow: 0 0 0 0 rgba(201, 169, 97, 0.45); }
+  70% { box-shadow: 0 0 0 14px rgba(201, 169, 97, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 169, 97, 0); }
+}
+
+.animate-fade-up { animation: fadeInUp 0.6s ease-out both; }
+.animate-fade-in { animation: fadeIn 0.5s ease-out both; }
+.animate-scale-in { animation: scaleIn 0.4s ease-out both; }
+.animate-pulse-ring { animation: pulseRing 2s infinite; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-forest-deep); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-bordo);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-bordo-light); }
+
+/* Input focus glow */
+.input-classic:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.18);
+}
+
+/* Shimmer for the gold button */
+.btn-gold-shimmer {
+  background: linear-gradient(110deg, var(--color-gold-aged) 0%, var(--color-gold-bright) 45%, var(--color-gold) 55%, var(--color-gold-aged) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3.5s linear infinite;
+}

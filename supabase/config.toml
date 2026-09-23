@@ -1,0 +1,8 @@
+[functions.verify-face]
+verify_jwt = true
+
+[functions.login-face]
+verify_jwt = false
+
+[functions.password-reset-face]
+verify_jwt = false
